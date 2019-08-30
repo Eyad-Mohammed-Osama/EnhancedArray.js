@@ -1,0 +1,26 @@
+{
+  "name": "enhanced-array.js",
+  "version": "1.0.0",
+  "description": "A javascript library that enhances native Array object",
+  "main": "main.js",
+  "scripts": {
+    "test": "node lib/main.js",
+    "build": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eyad-Mohammed-Osama/EnhancedArray.js.git"
+  },
+  "author": "Eyad-Mohammed-Osama",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eyad-Mohammed-Osama/EnhancedArray.js/issues"
+  },
+  "homepage": "https://github.com/Eyad-Mohammed-Osama/EnhancedArray.js#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5"
+  }
+}
