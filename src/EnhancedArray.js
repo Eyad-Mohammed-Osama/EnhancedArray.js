@@ -41,7 +41,7 @@ class EnhancedArray extends Array {
         if (result.length === 0) {
             return null;
         }
-        return result;
+        return new EnhancedArray(...result);
     }
 
     union(arr) {
@@ -60,7 +60,7 @@ class EnhancedArray extends Array {
         if (result.length === 0) {
             return null;
         }
-        return result;
+        return new EnhancedArray(...result);
     }
 
     difference(arr) {
@@ -90,7 +90,7 @@ class EnhancedArray extends Array {
         if (result.length === 0) {
             return null;
         }
-        return result;
+        return new EnhancedArray(...result);
     }
 
     symmetric_difference(arr) {
@@ -128,7 +128,7 @@ class EnhancedArray extends Array {
         if (result.length === 0) {
             return null;
         }
-        return result;
+        return new EnhancedArray(...result);
     }
 
     distinct() {
@@ -145,7 +145,7 @@ class EnhancedArray extends Array {
         if (result.length === 0) {
             return null;
         }
-        return result;
+        return new EnhancedArray(...result);
     }
 
     count(predicate = null) {
@@ -173,7 +173,7 @@ class EnhancedArray extends Array {
         if (result.length === 0) {
             return null;
         }
-        return result;
+        return new EnhancedArray(...result);
     }
 
     static range(start, end, step = 1) {
@@ -200,7 +200,7 @@ class EnhancedArray extends Array {
         if (result.length === 0) {
             return null;
         }
-        return result;
+        return new EnhancedArray(...result);
     }
 
     pad(size, value) {
@@ -226,7 +226,7 @@ class EnhancedArray extends Array {
             }
             result = result.concat(this);
         }
-        return result;
+        return new EnhancedArray(...result);
     }
 
     sum(predicate = null) {
@@ -289,7 +289,7 @@ class EnhancedArray extends Array {
                 }
             }
         }
-        return picked;
+        return new EnhancedArray(...picked);
     }
 
     shuffle() {
@@ -308,7 +308,7 @@ class EnhancedArray extends Array {
                 c++;
             }
         }
-        return result;
+        return new EnhancedArray(...result);
     }
 
     is_sorted(mode = EnhancedArray.ASCENDING) {
@@ -389,7 +389,7 @@ class EnhancedArray extends Array {
             }
             result[i] = element;
         }
-        return result;
+        return new EnhancedArray(...result);
     }
 
     equals(arr, strict = false) {
