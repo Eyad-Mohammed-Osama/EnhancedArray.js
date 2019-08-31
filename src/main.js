@@ -110,6 +110,7 @@ console.log("Is the array equal to ['2', 4, '7', 11, 13, '16', '19'] ? " + arr.e
 
 console.log("------------------------------------------------------------------------------------------------------------------------------------------");
 
+arr = new EnhancedArray(2, 4, 7, 11, 13, 16, 19);
 arr = arr.pad(10, 1);
 console.log("The original array after padding it to 10 elements with value 1 is: " + arr);
 
