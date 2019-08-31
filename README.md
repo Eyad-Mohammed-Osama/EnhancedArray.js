@@ -356,3 +356,171 @@ let arr = new EnhancedArray(2, 4, 7, 11, 13, 16, 19);
 let shuffled = arr.shuffle(); // Outputs something like [4, 16, 7, 13, 19, 11, 2]
 ```
 
+#### is_sorted()
+Checks whether the original array is sorted, either in ascending or descending order.
+
+Syntax:
+```js
+let arr = new EnhancedArray(...elements);
+
+arr.is_sorted(); // checks whether the array is sorted in ascending order
+arr.is_sorted(EnhancedArray.ASCENDING); // checks whether the array is sorted in ascending order
+arr.is_sorted(EnhancedArray.DESCENDING); // checks whether the array is sorted in descending order
+```
+
+Examples:
+```js
+let arr = new EnhancedArray(2, 4, 7, 11, 13, 16, 19);
+
+arr.is_sorted(); // output true
+arr.is_sorted(EnhancedArray.DESCENDING); // output false
+```
+
+#### binary_search()
+Performs an iterative binary search on the original array ONLY IF it's sorted.
+
+Syntax:
+```js
+let arr = new EnhancedArray(...elements);
+let index = arr.binary_search(some_value); // search for some_value in the array
+```
+
+Examples:
+```js
+let arr = new EnhancedArray(2, 4, 7, 11, 13, 16, 19);
+let index;
+
+index = arr.binary_search(11); // outputs 3
+index = arr.binary_search(15); // output -1
+```
+
+#### generate_random() `static`
+Generate an array of pseudo-random real numbers with approximately uniform distribution.
+
+**Warning:** this method, since it's built using `Math.random()`, **SHOULD NOT** be used to generate cryptographically secure random numbers.
+
+Syntax:
+```js
+let arr;
+arr = EnhancedArray.generate_random(min, max, count); // generates an array that contains random real-numbers in the domain [min, max) of length (count)
+arr = EnhancedArray.generate_random(min, max, count, isInteger); // generates an array that contains only random integers in the domain [min, max) of length (count)
+arr = EnhancedArray.generate_random(min, max, count, isInteger, containsNegative); // generates an array that contains only random integers in the domain [min, max) of length (count) with negative numbers
+```
+
+Examples:
+```js
+let arr;
+arr = EnhancedArray.generate_random(1, 10, 5, false, true); // output something like: [-8.852227833260299, -7.19788578197682, 5.868836151370331, -9.651857686957921, -8.999403386571933]
+```
+
+#### equals()
+Performs a comparison between the original array and the passed array.
+
+Syntax:
+```js
+let arr = new EnhancedArray(...elements);
+arr.equals(another_array); // performs a normal comparison based on the value
+arr.equals(another_array, true); // performs a strict comparison based on the value and the type
+```
+
+Examples:
+```js
+let arr = new EnhancedArray(2, 4, 7, 11, 13, 16, 19);
+arr.equals([2, "4", "7", 11, 13, "16", 19]); // output true
+arr.equals([2, "4", "7", 11, 13, "16", 19], true); // output false
+```
+
+#### min()
+Calculates the smallest element in the original array that satisfies a specific predicate.
+
+Syntax:
+```js
+let arr = new EnhancedArray(...elements);
+arr.min(); // get the smallest element in the array
+arr.min(predicate); // get the smallest element in the array that satisfies a specific predicate
+```
+
+Examples:
+```js
+let arr = new EnhancedArray(2, 4, 7, 11, 13, 16, 19);
+
+arr.min(); // output 2
+arr.min(function(element) {
+  return (element % 2 === 1);
+}); // get the smallest odd number, output 7
+```
+
+#### max()
+Calculates the biggest element in the original array that satisfies a specific predicate.
+
+Syntax:
+```js
+let arr = new EnhancedArray(...elements);
+arr.max(); // get the biggest element in the array
+arr.max(predicate); // get the biggest element in the array that satisfies a specific predicate
+```
+
+Examples:
+```js
+let arr = new EnhancedArray(2, 4, 7, 11, 13, 16, 19);
+
+arr.max(); // output 2
+arr.max(function(element) {
+  return (element % 2 === 0);
+}); // get the biggest even number, output 16
+```
+
+#### get_range()
+Calculates the difference between the biggest and smallest elements in the original array.
+
+Syntax:
+```js
+let arr = new EnhancedArray(...elements);
+arr.get_range();
+```
+
+Example:
+```js
+let arr = new EnhancedArray(2, 4, 7, 11, 13, 16, 19);
+arr.get_range(); // outputs 19 - 2 = 17
+```
+
+#### get_median()
+Calculates the median element in the original array after sorting it.
+
+Syntax:
+```js
+let arr = new EnhancedArray(...elements);
+arr.get_median();
+```
+
+Example:
+```js
+let arr = new EnhancedArray(2, 4, 7, 11, 13, 16, 19);
+arr.get_median(); // outputs 11
+```
+
+#### get_average()
+Calculates the average of array elements.
+
+Syntax:
+```js
+let arr = new EnhancedArray(...elements);
+arr.get_average(); // calculates the arithmetic average
+arr.get_average(weights); // calculates the statistical average
+arr.get_average(weights, unspecified); // calculates the statistical average and assigining the value of (unspecified) as a weight for unweighted values
+```
+
+Examples:
+```js
+let arr = new EnhancedArray(2, 4, 7, 11, 13, 16, 19);
+arr.get_average(); // output 10.285714285714286
+
+let weights = {
+  2 : 5,
+  4 : 1,
+  16 : 2
+};
+
+arr.get_average(weights, 0); // give (2) weight of (5), and (4) weight of (1), and (16) weight of (2), and give all te others weight of (0), output 5.75
+```
