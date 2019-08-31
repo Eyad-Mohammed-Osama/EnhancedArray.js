@@ -86,10 +86,16 @@ Instantiate an object of `EnhancedArray` class.
 Syntax:
 
 ```js
-let arr = new EnhancedArray(); // create an empty array
-let arr = new EnhancedArray(length : number?); // create an empty array of specified length
-let arr = new EnhancedArray(...items : any); // create an array of elements
+let arr = new EnhancedArray(init?);
 ```
+
+Parameters:
+- **init** (*optional*) : could be an array, a single integer value, you can also use the spread operator here.
+
+Return:
+- If empty, it returns a zero length unintialized instance of `EnhancedArray`.
+- If a single positive integer value is passed, it returns uninitialized instance of `EnhancedArray` with the specified length.
+- If multiple parameters are passed, it returns an instance of `EnhancedArray` that contains those parameters as elements.
 
 Examples:
 
@@ -106,11 +112,15 @@ let enhanced_array = new EnhancedArray(...arr); // then use the spread operator 
 Calculate all the shared elements between two arrays.
 
 Syntax:
-
 ```js
-let arr = new EnhancedArray(...elements);
-let intersection = arr.intersect(another_array);
+let intersection = enhanced_array_instance.intersect(another_array);
 ```
+
+Parameters:
+- **another_array** : the array which you want to intersect with.
+
+Return:
+- An instance of `EnhancedArray` that contains the shared elements.
 
 Examples:
 ```js
@@ -124,9 +134,14 @@ Calculate all the shared and unshared elements between two arrays.
 Syntax:
 
 ```js
-let arr = new EnhancedArray(...elements);
-let union = arr.union(another_array);
+let union = enhanced_array_instance.union(another_array);
 ```
+
+Parameters:
+- **another_array** : the array which you want to union with.
+
+Return:
+- An instance of `EnhancedArray` that contains the shared and unshared elements.
 
 Examples:
 ```js
@@ -140,9 +155,14 @@ Calculate all elements that belongs to the original array but not to the passed 
 Syntax:
 
 ```js
-let arr = new EnhancedArray(...elements);
-let difference = arr.difference(another_array);
+let difference = enhanced_array_instance.difference(another_array);
 ```
+
+Parameters:
+- **another_array** : the array which you want to differentiate with.
+
+Return:
+- An instance of `EnhancedArray` that contains all elements that belongs to the original array but not to the passed array.
 
 Examples:
 ```js
@@ -156,14 +176,20 @@ Calculate all elements that belongs to the original array and all elements that 
 Syntax:
 
 ```js
-let arr = new EnhancedArray(...elements);
-let symmetric_difference = arr.symmetric_difference(another_array);
+let symmetric_difference = enhanced_array_instance.symmetric_difference(another_array);
 ```
+
+Parameters:
+- **another_array** : the array which you want to get the symmetric difference with.
+
+Return:
+- An instance of `EnhancedArray` that contains all elements that belongs to the original array and all elements that belongs to the passed array, but not those elements which belongs to their intersection.
+
 
 Examples:
 ```js
 let arr = new EnhancedArray(2, 4, 7, 11, 13, 16, 19);
-let difference = arr.difference([1, 2, 4, 11, 13, 17]); // outputs [7, 16, 19, 1, 7]
+let difference = arr.symmetric_difference([1, 2, 4, 11, 13, 17]); // outputs [7, 16, 19, 1, 7]
 ```
 
 #### distinct()
@@ -172,9 +198,14 @@ Calculate all the distinct elements in the original array.
 Syntax:
 
 ```js
-let arr = new EnhancedArray(...elements);
-let distinct = arr.distinct();
+let distinct = enhanced_array_instance.distinct();
 ```
+
+Parameters:
+- None
+
+Return:
+- An instance of `EnhancedArray` that contains all distinct elements.
 
 Examples:
 ```js
@@ -187,12 +218,14 @@ Count all the elements in the original array that satisfies a specific predicate
 
 Syntax:
 ```js
-let arr = new EnhancedArray(...elements);
-
-let count;
-count= arr.count(); // count all elements (returns this.length)
-count = arr.count(predicate); // count all elements that satisfies the predicate
+let count = enhanced_array_instance.count(predicate?);
 ```
+
+Parameters:
+- **predicate** (*optional*) : function to apply when counting elements.
+
+Return:
+- An integer represents the number of elements.
 
 Examples:
 ```js
@@ -209,11 +242,14 @@ Calculate the indices of all elements that satisfies a specific predicate.
 
 Syntax:
 ```js
-let arr = new EnhancedArray(...elements);
-
-let count;
-count = arr.find_indices(predicate); // return the indices of all elements that satisfies the predicate
+let indices = enhanced_array_instance.find_indices(predicate);
 ```
+
+Parameters:
+- **predicate** : function to apply when iterating over elements.
+
+Return:
+- An instance of `EnhancedArray` that contains the indices of the elements.
 
 Examples:
 ```js
@@ -228,14 +264,21 @@ Returns an array built up from a specific range.
 
 Syntax:
 ```js
-let arr = EnhancedArray.range(start, end);  // builds up an array of range [start, end] (inclusive) with a step of 1
-let arr = EnhancedArray.range(start, end, step); // builds up an array of range [start, end] (inclusive) with a custom step
+let arr = EnhancedArray.range(start, end, step?); // builds up an array of range [start, end] (inclusive) with a custom step
 ```
+
+Parameters:
+- **start** : a number that specifies the starting point.
+- **end** : a number that specifies the ending point.
+- **step** (*optional*) : a number that specifies the step, defaults to 1.
+
+Return:
+- An instance of `EnhancedArray` that contains the built array.
 
 Examples:
 ```js
 let arr = EnhancedArray.range(0, 10); // output [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-let arr = arr = EnhancedArray.range(0, 10, 2); // output [0, 2, 4, 6, 8, 10]
+let arr = EnhancedArray.range(0, 10, 2); // output [0, 2, 4, 6, 8, 10]
 ```
 
 **Notice** that if `start < end` and `step <= 0` or `start >= end` and `step >= 0`, then this method would throw a `PossibleMemoryCrash` exception to prevent going into infinite loop.
@@ -259,11 +302,15 @@ The behavior of this method is the same of PHP [https://www.php.net/manual/en/fu
 
 Syntax:
 ```js
-let arr = new EnhancedArray(...elements);
-
-let padded;
-padded = arr.pad(size, value);
+let padded = enhanced_array_instance.pad(size, value);
 ```
+
+Parameters:
+- **size** : an integer that specifies the size of the array after padding.
+- **value** : the value being used to fill the array after padding it.
+
+Return:
+- An instance of `EnhancedArray` that contains the padded array.
 
 Examples:
 ```js
@@ -279,12 +326,14 @@ Calculates the sum of all the elements in the original array that satisfies a sp
 
 Syntax:
 ```js
-let arr = new EnhancedArray(...elements);
-
-let sum;
-sum = arr.sum(); // sum all elements 
-sum = arr.sum(predicate); // sum of all elements that satisfies the predicate
+let sum = enhanced_array_instance.sum(predicate?);
 ```
+
+Parameters:
+- **predicate** (*optional*) : a function to apply when calculating the sum.
+
+Return:
+- The sum of the elements.
 
 Examples:
 ```js
@@ -302,12 +351,14 @@ Calculates the product of all the elements in the original array that satisfies 
 
 Syntax:
 ```js
-let arr = new EnhancedArray(...elements);
-
-let product;
-product = arr.product(); // multiply all elements 
-product = arr.product(predicate); // product of all elements that satisfies the predicate
+let product = enhanced_array_instance.product(predicate?);
 ```
+
+Parameters:
+- **predicate** (*optional*) : a function to apply when calculating the product.
+
+Return:
+- The product of the elements.
 
 Examples:
 ```js
@@ -325,12 +376,15 @@ Get an array of random elements from the original array.
 
 Syntax:
 ```js
-let arr = new EnhancedArray(...elements);
-
-let random_elements;
-random_elements = arr.random(); // Get a random element from the array
-random_elements = arr.random(n); // Get (n) random elements from the array (where n <= array length)
+let random_elements = enhanced_array_instance.random(count?);
 ```
+
+Parameters:
+- **count** (*optional*) : the number of random elements to retrieve, defaults to 1.
+
+Return:
+- If **count** is equal to 1, it returns a single random element.
+- If **count** is bigger than 1, it returns an instance of `EnhancedArray` that contains random elements.
 
 Examples:
 ```js
@@ -346,9 +400,14 @@ Returns a shuffled copy of the original array.
 
 Syntax:
 ```js
-let arr = new EnhancedArray(...elements);
-let shuffled = arr.shuffle();
+let shuffled = enhanced_array_instance.shuffle();
 ```
+
+Parameters:
+- None.
+
+Return:
+- An instance of `EnhancedArray` that contains a shuffled copy of the array.
 
 Examples:
 ```js
@@ -361,12 +420,16 @@ Checks whether the original array is sorted, either in ascending or descending o
 
 Syntax:
 ```js
-let arr = new EnhancedArray(...elements);
-
-arr.is_sorted(); // checks whether the array is sorted in ascending order
-arr.is_sorted(EnhancedArray.ASCENDING); // checks whether the array is sorted in ascending order
-arr.is_sorted(EnhancedArray.DESCENDING); // checks whether the array is sorted in descending order
+let is_sorted = enhanced_array_instance.is_sorted(mode?);
 ```
+
+Parameters:
+- **mode** (*optional*) : specifies the sorting mode to check, the following two modes are supported:
+  - `EnhancedArray.ASCENDING` : used with ascending sorting, this is the default mode.
+  - `EnhancedArray.DESCENDING` : used with descending sorting.
+
+Return:
+- Returns `true` if the array is sorted in any of the previous modes, `false` otherwise.
 
 Examples:
 ```js
@@ -381,9 +444,16 @@ Performs an iterative binary search on the original array ONLY IF it's sorted.
 
 Syntax:
 ```js
-let arr = new EnhancedArray(...elements);
-let index = arr.binary_search(some_value); // search for some_value in the array
+let index = enhanced_array_instance.binary_search(some_value);
 ```
+
+Parameters:
+- **some_value** : the value to search for.
+
+Return:
+- If the array isn't sorted in neither ascending order nor descending order, it returns `null`.
+- If the search value doesn't exist, it returns -1.
+- If the search value has been found, it returns its index.
 
 Examples:
 ```js
@@ -401,11 +471,18 @@ Generate an array of pseudo-random real numbers with approximately uniform distr
 
 Syntax:
 ```js
-let arr;
-arr = EnhancedArray.generate_random(min, max, count); // generates an array that contains random real-numbers in the domain [min, max) of length (count)
-arr = EnhancedArray.generate_random(min, max, count, isInteger); // generates an array that contains only random integers in the domain [min, max) of length (count)
-arr = EnhancedArray.generate_random(min, max, count, isInteger, containsNegative); // generates an array that contains only random integers in the domain [min, max) of length (count) with negative numbers
+let arr = EnhancedArray.generate_random(min, max, count, isInteger?, containsNegative?);
 ```
+
+Parameters:
+- **min** : a number that denotes the lower limit for the generated numbers, a random number might possibly get this value.
+- **max** : a number that denotes the upper limit for the generated numbers, a random number can never get this value.
+- **count** : an integer that denotes the length of the array.
+- **isInteger** (*optional*) : a boolean value specifies whether the array should only contain integer numbers, defaults to `false`.
+- **containsNegative** (*optional*) : a boolean value that specifies whether you want to see some negative numbers, defaults to `false`.
+
+Return:
+- An instance of `EnhancedArray` that contains the generated random numbers.
 
 Examples:
 ```js
@@ -418,10 +495,12 @@ Performs a comparison between the original array and the passed array.
 
 Syntax:
 ```js
-let arr = new EnhancedArray(...elements);
-arr.equals(another_array); // performs a normal comparison based on the value
-arr.equals(another_array, true); // performs a strict comparison based on the value and the type
+let equals = enhanced_array_instance.equals(another_array, strict?);
 ```
+
+Parameters:
+- **another_array** : the array you would like to compare with.
+- **strict** (*optional*) : a boolean value that specifies whether strict comparison should happen or not, if you set it to `false` it will compare the elements only using value, if you set it to `true` (default) it will compare the elements using value and type.
 
 Examples:
 ```js
@@ -435,10 +514,14 @@ Calculates the smallest element in the original array that satisfies a specific 
 
 Syntax:
 ```js
-let arr = new EnhancedArray(...elements);
-arr.min(); // get the smallest element in the array
-arr.min(predicate); // get the smallest element in the array that satisfies a specific predicate
+let min = enhanced_array_instance.min(predicate?);
 ```
+
+Parameters:
+- **predicate** (*optional*) : the function to apply when calculating the smallest element.
+
+Return:
+- The smallest element in the array.
 
 Examples:
 ```js
@@ -455,10 +538,14 @@ Calculates the biggest element in the original array that satisfies a specific p
 
 Syntax:
 ```js
-let arr = new EnhancedArray(...elements);
-arr.max(); // get the biggest element in the array
-arr.max(predicate); // get the biggest element in the array that satisfies a specific predicate
+let max = enhanced_array_instance.max(predicate?);
 ```
+
+Parameters:
+- **predicate** (*optional*) : the function to apply when calculating the biggest element.
+
+Return:
+- The biggest element in the array.
 
 Examples:
 ```js
@@ -473,10 +560,15 @@ arr.max(function(element) {
 #### get_range()
 Calculates the difference between the biggest and smallest elements in the original array.
 
+Parameters:
+- None.
+
+Return:
+- A numeric value that represents the range.
+
 Syntax:
 ```js
-let arr = new EnhancedArray(...elements);
-arr.get_range();
+let range = enhanced_array_instance.get_range();
 ```
 
 Example:
@@ -490,9 +582,14 @@ Calculates the median element in the original array after sorting it.
 
 Syntax:
 ```js
-let arr = new EnhancedArray(...elements);
-arr.get_median();
+let median = enhanced_array_instance.get_median();
 ```
+
+Parameters:
+- None.
+
+Return:
+- The median element in the array.
 
 Example:
 ```js
@@ -505,11 +602,15 @@ Calculates the average of array elements.
 
 Syntax:
 ```js
-let arr = new EnhancedArray(...elements);
-arr.get_average(); // calculates the arithmetic average
-arr.get_average(weights); // calculates the statistical average
-arr.get_average(weights, unspecified); // calculates the statistical average and assigining the value of (unspecified) as a weight for unweighted values
+let average = enhanced_array_instance.get_average(weights?, unspecified?);
 ```
+
+Parameters:
+- **weights** (*optional*) : a key-value object that specifies the weight for each entry.
+- **unspecified** (*optional*) : a numeric value that will be used as a weight for entries which doesn't have their weights specified in the weights parameter.
+
+Return:
+- A numeric value that denotes the average of array elements, if weights parameters was specified then this numeric value denotes the statistical average, otherwise it denotes the arithmetic average.
 
 Examples:
 ```js
