@@ -19,7 +19,13 @@ Now open your terminal and run this command:
 ## Tests
 You can run a quick test to see available capabilities.
 
-In your terminal, execute this command:
+First, clone this repository to your local machine by executing the following command in your terminal:
+
+`git clone https://github.com/Eyad-Mohammed-Osama/EnhancedArray.js.git`
+
+Then navigate to the repository folder.
+
+After that, in your terminal, execute this command:
 `npm run test`
 
 ## Usage
