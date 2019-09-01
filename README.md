@@ -126,7 +126,8 @@ Parameters:
 - **another_array** : the array which you want to intersect with.
 
 Return:
-- An instance of `EnhancedArray` that contains the shared elements.
+- If **another_array** isn't an instance of `Array`, it returns `null`.
+- Otherwise, returns an instance of `EnhancedArray` that contains the shared elements.
 
 Examples:
 ```js
@@ -147,7 +148,8 @@ Parameters:
 - **another_array** : the array which you want to union with.
 
 Return:
-- An instance of `EnhancedArray` that contains the shared and unshared elements.
+- If **another_array** isn't an instance of `Array`, it returns `null`.
+- Otherwise, returns instance of `EnhancedArray` that contains the shared and unshared elements.
 
 Examples:
 ```js
@@ -168,7 +170,8 @@ Parameters:
 - **another_array** : the array which you want to differentiate with.
 
 Return:
-- An instance of `EnhancedArray` that contains all elements that belongs to the original array but not to the passed array.
+- If **another_array** isn't an instance of `Array`, it returns `null`.
+- Otherwise, returns an instance of `EnhancedArray` that contains all elements that belongs to the original array but not to the passed array.
 
 Examples:
 ```js
@@ -189,7 +192,8 @@ Parameters:
 - **another_array** : the array which you want to get the symmetric difference with.
 
 Return:
-- An instance of `EnhancedArray` that contains all elements that belongs to the original array and all elements that belongs to the passed array, but not those elements which belongs to their intersection.
+- If **another_array** isn't an instance of `Array`, it returns `null`.
+- Otherwise, returns instance of `EnhancedArray` that contains all elements that belongs to the original array and all elements that belongs to the passed array, but not those elements which belongs to their intersection.
 
 
 Examples:
@@ -231,7 +235,8 @@ Parameters:
 - **predicate** (*optional*) : function to apply when counting elements.
 
 Return:
-- An integer represents the number of elements.
+- If **predicate** isn't neither an instance of `Function` nor `null`, it returns `null`.
+- Otherwise, returns an integer represents the number of elements.
 
 Examples:
 ```js
@@ -255,7 +260,8 @@ Parameters:
 - **predicate** : function to apply when iterating over elements.
 
 Return:
-- An instance of `EnhancedArray` that contains the indices of the elements.
+- If **predicate** isn't neither an instance of `Function`, it returns `null`.
+- Otherwise, returns instance of `EnhancedArray` that contains the indices of the elements.
 
 Examples:
 ```js
@@ -279,7 +285,8 @@ Parameters:
 - **step** (*optional*) : a number that specifies the step, defaults to 1.
 
 Return:
-- An instance of `EnhancedArray` that contains the built array.
+- If any of **start**, **end**, **step** are neither instance of `Number` nor numeric, it returns `null`.
+- Otherwise, returns instance of `EnhancedArray` that contains the built array.
 
 Examples:
 ```js
@@ -316,7 +323,8 @@ Parameters:
 - **value** : the value being used to fill the array after padding it.
 
 Return:
-- An instance of `EnhancedArray` that contains the padded array.
+- If **size** isn't an integer, it returns `null`.
+- Otherwise, returns instance of `EnhancedArray` that contains the padded array.
 
 Examples:
 ```js
@@ -339,7 +347,8 @@ Parameters:
 - **predicate** (*optional*) : a function to apply when calculating the sum.
 
 Return:
-- The sum of the elements.
+- If **predicate** isn't neither an instance of `Function` nor `null`, it returns `null`.
+- Otherwise, returns the sum of the elements.
 
 Examples:
 ```js
@@ -364,7 +373,8 @@ Parameters:
 - **predicate** (*optional*) : a function to apply when calculating the product.
 
 Return:
-- The product of the elements.
+- If **predicate** isn't neither an instance of `Function` nor `null`, it returns `null`.
+- Otherwise, returns the product of the elements.
 
 Examples:
 ```js
@@ -391,6 +401,7 @@ Parameters:
 Return:
 - If **count** is equal to 1, it returns a single random element.
 - If **count** is bigger than 1, it returns an instance of `EnhancedArray` that contains random elements.
+- Otherwise, return `null`.
 
 Examples:
 ```js
@@ -435,7 +446,8 @@ Parameters:
   - `EnhancedArray.DESCENDING` : used with descending sorting.
 
 Return:
-- Returns `true` if the array is sorted in any of the previous modes, `false` otherwise.
+- If **mode** is neither empty nor equal to any of the sorting modes, returns `null`.
+- Otherwise, returns `true` if the array is sorted in any of the previous modes, `false` otherwise.
 
 Examples:
 ```js
@@ -488,7 +500,10 @@ Parameters:
 - **containsNegative** (*optional*) : a boolean value that specifies whether you want to see some negative numbers, defaults to `false`.
 
 Return:
-- An instance of `EnhancedArray` that contains the generated random numbers.
+- If neither **min** nor **max** are numeric, returns `null`.
+- If **count** isn't a positive non-zero integer value, returns `null`.
+- If neither **isInteger** nor **containsNegative** are boolean values, returns `null`.
+- Otherwise, returns an instance of `EnhancedArray` that contains the generated random numbers.
 
 Examples:
 ```js
@@ -507,6 +522,11 @@ let equals = enhanced_array_instance.equals(another_array, strict?);
 Parameters:
 - **another_array** : the array you would like to compare with.
 - **strict** (*optional*) : a boolean value that specifies whether strict comparison should happen or not, if you set it to `false` it will compare the elements only using value, if you set it to `true` (default) it will compare the elements using value and type.
+
+Return:
+- If **another_array** isn't an instance of `Array`, it returns `null`.
+- If **strict** isn't a boolean value, it returns `null`.
+- Otherwise, returns `true` if the two arrays are equal, `false` otherwise.
 
 Examples:
 ```js
@@ -527,7 +547,8 @@ Parameters:
 - **predicate** (*optional*) : the function to apply when calculating the smallest element.
 
 Return:
-- The smallest element in the array.
+- If **predicate** isn't neither an instance of `Function` nor `null`, it returns `null`.
+- Otherwise, returns the smallest element in the array.
 
 Examples:
 ```js
@@ -551,7 +572,8 @@ Parameters:
 - **predicate** (*optional*) : the function to apply when calculating the biggest element.
 
 Return:
-- The biggest element in the array.
+- If **predicate** isn't neither an instance of `Function` nor `null`, it returns `null`.
+- Otherwise, return the biggest element in the array.
 
 Examples:
 ```js
@@ -616,7 +638,9 @@ Parameters:
 - **unspecified** (*optional*) : a numeric value that will be used as a weight for entries which doesn't have their weights specified in the weights parameter.
 
 Return:
-- A numeric value that denotes the average of array elements, if weights parameters was specified then this numeric value denotes the statistical average, otherwise it denotes the arithmetic average.
+- If **weights** isn't a valid key-value object or `null`, it returns `null`.
+- If **unspecified** isn't a numeric value, it returns `null`.
+- Otherwise, returns numeric value that denotes the average of array elements, if weights parameters was specified then this numeric value denotes the statistical average, otherwise it denotes the arithmetic average.
 
 Examples:
 ```js
