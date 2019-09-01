@@ -14,6 +14,9 @@ class EnhancedArray extends Array {
     }
 
     intersect(arr) {
+        if (!(arr instanceof Array)) {
+            return null;
+        }
         let result = [];
         let values1 = {};
         let values2 = {};
@@ -45,6 +48,9 @@ class EnhancedArray extends Array {
     }
 
     union(arr) {
+        if (!(arr instanceof Array)) {
+            return null;
+        }
         let temp = this.concat(arr);
         let values = {};
         let c = 0;
@@ -64,6 +70,9 @@ class EnhancedArray extends Array {
     }
 
     difference(arr) {
+        if (!(arr instanceof Array)) {
+            return null;
+        }
         let result = [];
         let values1 = {};
         let values2 = {};
@@ -94,6 +103,9 @@ class EnhancedArray extends Array {
     }
 
     symmetric_difference(arr) {
+        if (!(arr instanceof Array)) {
+            return null;
+        }
         let result = [];
         let values1 = {};
         let values2 = {};
@@ -152,6 +164,9 @@ class EnhancedArray extends Array {
         if (predicate === null) {
             return this.length;
         }
+        if ((typeof predicate !== "function") && !(predicate instanceof Function)) {
+            return null;
+        }
         let c = 0;
         for (let i = 0; i < this.length; i++) {
             if (predicate(this[i])) {
@@ -162,6 +177,9 @@ class EnhancedArray extends Array {
     }
 
     find_indices(predicate) {
+        if ((typeof predicate !== "function") && !(predicate instanceof Function)) {
+            return null;
+        }
         let result = [];
         let c = 0;
         for (let i = 0; i < this.length; i++) {
@@ -177,6 +195,11 @@ class EnhancedArray extends Array {
     }
 
     static range(start, end, step = 1) {
+        if (((typeof start !== "number") && !(start instanceof Number)) ||
+            ((typeof end !== "number") && !(end instanceof Number)) ||
+            ((typeof step !== "number") && !(step instanceof Number))) {
+                return null;
+        }
         let result = [];
         let c = 0;
         if (start < end) {
@@ -204,6 +227,9 @@ class EnhancedArray extends Array {
     }
 
     pad(size, value) {
+        if (((typeof size !== "number") && !(size instanceof Number)) || !(Number.isInteger(size))) {
+            return null;
+        }
         let result = [];
         let c;
         if (size === 0) {
@@ -236,6 +262,9 @@ class EnhancedArray extends Array {
                 s += this[i];
             }
         } 
+        else if ((typeof predicate !== "function") && !(predicate instanceof Function)) {
+            return null;
+        }
         else {
             for (let i = 0; i < this.length; i++) {
                 if (predicate(this[i])) {
@@ -253,6 +282,9 @@ class EnhancedArray extends Array {
                 p *= this[i];
             }
         } 
+        else if ((typeof predicate !== "function") && !(predicate instanceof Function)) {
+            return null;
+        }
         else {
             for (let i = 0; i < this.length; i++) {
                 if (predicate(this[i])) {
@@ -264,7 +296,7 @@ class EnhancedArray extends Array {
     }
 
     random(count = 1) {
-        if (count > this.length) {
+        if (count > this.length || count <= 0 || ((typeof count !== "number") && !(count instanceof Number) && !(Number.isInteger(count)))) {
             return null;
         }
         let picked;
@@ -312,6 +344,9 @@ class EnhancedArray extends Array {
     }
 
     is_sorted(mode = EnhancedArray.ASCENDING) {
+        if (mode !== EnhancedArray.ASCENDING && mode !== EnhancedArray.DESCENDING) {
+            return null;
+        }
         let sorted = true;
         if (mode === EnhancedArray.ASCENDING) {
             for (let i = 0; i < this.length - 1; i++) {
@@ -374,6 +409,13 @@ class EnhancedArray extends Array {
     }
 
     static generate_random(min, max, count, isInteger = false, containsNegative = false) {
+        if (((typeof min !== "number") && !(min instanceof Number)) ||
+            ((typeof max !== "number") && !(max instanceof Number)) ||
+            ((typeof count !== "number") && !(count instanceof Number) && ((!Number.isInteger(count)) || (count <= 0))) ||
+            ((typeof isInteger !== "boolean") && !(isInteger instanceof Boolean)) ||
+            ((typeof containsNegative !== "boolean") && !(containsNegative instanceof Boolean))) {
+                return null;
+            }
         let result = [];
         let element;
         for (let i = 0; i < count; i++) {
@@ -393,6 +435,9 @@ class EnhancedArray extends Array {
     }
 
     equals(arr, strict = false) {
+        if (!(arr instanceof Array) || ((typeof strict !== "boolean") && !(strict instanceof Boolean))) {
+            return null;
+        }
         if (arr.length !== this.length) {
             return false;
         }
@@ -430,6 +475,9 @@ class EnhancedArray extends Array {
                 min = this[i] ^ ((min ^ this[i]) & -(min < this[i]));
             }
         } 
+        else if ((typeof predicate !== "function") && !(predicate instanceof Function)) {
+            return null;
+        }
         else {
             for (let i = 0; i < this.length; i++) {
                 if (predicate(this[i])) {
@@ -455,6 +503,9 @@ class EnhancedArray extends Array {
                 max = max ^ ((max ^ this[i]) & -(max < this[i]));
             }
         } 
+        else if ((typeof predicate !== "function") && !(predicate instanceof Function)) {
+            return null;
+        }
         else {
             for (let i = 0; i < this.length; i++) {
                 if (predicate(this[i])) {
@@ -493,6 +544,9 @@ class EnhancedArray extends Array {
     }
 
     get_average(weights = null, unspecified = 0) {
+        if ((typeof weights !== "object") || ((typeof unspecified !== "number") && !(unspecified instanceof Number))) {
+            return null;
+        }
         let s = 0;
         let sw = 0;
         if (weights === null) {
