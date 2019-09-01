@@ -3,6 +3,15 @@
 ## Introduction
 A small lightweight javascript library that enhances native arrays
 
+## Index:
+- [What's the point from this](#whats-the-point-from-this-)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Tests](#tests)
+- [Usage](#usage)
+- [Supported properties](#supported-properties)
+- [Supported methods](#supported-methods)
+
 ## What's the point from this ?
 Nothing really, just wanted to provide some methods that may save time when dealing with arrays.
 
@@ -61,29 +70,29 @@ EnhancedArray.DESCENDING
 
 ## Supported Methods
 In addition to the support of native **Array** methods, the following methods are supported:
-- constructor()
-- intersect()
-- union()
-- difference()
-- symmetric_difference()
-- distinct()
-- count()
-- find_indices()
-- range()
-- pad()
-- sum()
-- product()
-- random()
-- shuffle()
-- is_sorted()
-- binary_search()
-- generate_random()
-- equals()
-- min()
-- max()
-- get_range()
-- get_median()
-- get_average()
+- [constructor()](#constructor)
+- [intersect()](#intersect)
+- [union()](#union)
+- [difference()](#difference)
+- [symmetric_difference()](#symmetric_difference)
+- [distinct()](#distinct)
+- [count()](#count)
+- [find_indices()](#find_indices)
+- [range()](#range)
+- [pad()](#pad)
+- [sum()](#sum)
+- [product()](#product)
+- [random()](#random)
+- [shuffle()](#shuffle)
+- [is_sorted()](#is_sorted)
+- [binary_search()](#binary_search)
+- [generate_random()](#generate_random)
+- [equals()](#equals)
+- [min()](#min)
+- [max()](#max)
+- [get_range()](#get_range)
+- [get_median()](#get_median)
+- [get_average()](#get_average)
 
 
 #### constructor()
