@@ -236,8 +236,8 @@ class EnhancedArray extends Array {
             return this;
         } 
         else if (size > 0) {
-            result = this;
-            c = this.length;
+            result = this.slice();
+            c = result.length;
             for (let i = 0; i <= (size - this.length); i++) {
                 result[c] = value;
                 c++;
@@ -321,7 +321,13 @@ class EnhancedArray extends Array {
                 }
             }
         }
-        return new EnhancedArray(...picked);
+
+        if (count === 1) {
+            return picked;
+        }
+        else {
+            return new EnhancedArray(...picked);
+        }
     }
 
     shuffle() {
@@ -569,6 +575,8 @@ class EnhancedArray extends Array {
         }
         return (s / sw);
     }
+
+
 }
 
 module.exports = EnhancedArray;
