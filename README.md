@@ -670,7 +670,7 @@ arr.get_average(weights, 0); // give (2) weight of (5), and (4) weight of (1), a
 ```
 
 #### add()
-`since v1.1.6`
+`since v1.1.0`
 
 Performs an element-wise addition between the original array and passed array.
 
@@ -693,7 +693,7 @@ console.log("Array after adding its elements to [2, 4, 6, 8, 10, 12, 14]: " + ar
 ```
 
 #### subtract()
-`since v1.1.6`
+`since v1.1.0`
 
 Performs an element-wise subtraction between the original array and passed array.
 
@@ -716,7 +716,7 @@ console.log("Array after subtracting its elements from elements of [2, 4, 6, 8, 
 ```
 
 #### multiply()
-`since v1.1.6`
+`since v1.1.0`
 
 Performs an element-wise multiplication between the original array and passed array.
 
@@ -739,7 +739,7 @@ console.log("Array after multiplying its elements with elements of [2, 4, 6, 8, 
 ```
 
 #### divide()
-`since v1.1.6`
+`since v1.1.0`
 
 Performs an element-wise division between the original array and passed array.
 
@@ -762,7 +762,7 @@ console.log("Array after dividing its elements with elements of [2, 4, 6, 8, 10,
 ```
 
 #### exponent()
-`since v1.1.6`
+`since v1.1.0`
 
 Performs an element-wise exponentiation between the original array and passed array.
 
