@@ -93,7 +93,11 @@ In addition to the support of native **Array** methods, the following methods ar
 - [get_range()](#get_range)
 - [get_median()](#get_median)
 - [get_average()](#get_average)
-
+- [add()](#add)
+- [subtract()](#subtract)
+- [multiply()](#multiply)
+- [divide()](#divide)
+- [exponent()](#exponent)
 
 #### constructor()
 Instantiate an object of `EnhancedArray` class.
@@ -521,7 +525,7 @@ arr = EnhancedArray.generate_random(1, 10, 5, false, true); // output something 
 ```
 
 #### equals()
-Performs a comparison between the original array and the passed array.
+Performs an element-wise comparison between the original array and the passed array.
 
 Syntax:
 ```js
@@ -663,4 +667,119 @@ let weights = {
 };
 
 arr.get_average(weights, 0); // give (2) weight of (5), and (4) weight of (1), and (16) weight of (2), and give all te others weight of (0), output 5.75
+```
+
+#### add()
+`since v1.1.6`
+
+Performs an element-wise addition between the original array and passed array.
+
+Syntax:
+```js
+let add = enhanced_array_instance.add(any);
+```
+
+Parameters:
+- **any** : If it's a numeric value, it will be added to all elements of the original array, else if it's an array of numeric values, then an element-wise addition is performed.
+
+Return:
+- An instance of `EnhancedArray` that contains the result of the addition, returns `null` if **any** is neither a numeric value nor array, or if the length of `any` doesn't equal the length of the original array.
+
+Examples:
+```js
+let arr = new EnhancedArray(2, 4, 7, 11, 13, 16, 19);
+console.log("Array after adding 2 to all its elements: " + arr.add(2));
+console.log("Array after adding its elements to [2, 4, 6, 8, 10, 12, 14]: " + arr.add([2, 4, 6, 8, 10, 12, 14]));
+```
+
+#### subtract()
+`since v1.1.6`
+
+Performs an element-wise subtraction between the original array and passed array.
+
+Syntax:
+```js
+let add = enhanced_array_instance.subtract(any);
+```
+
+Parameters:
+- **any** : If it's a numeric value, it will be subtracted from all elements of the original array, else if it's an array of numeric values, then an element-wise subtraction is performed.
+
+Return:
+- An instance of `EnhancedArray` that contains the result of the subtraction, returns `null` if **any** is neither a numeric value nor array, or if the length of `any` doesn't equal the length of the original array.
+
+Examples:
+```js
+let arr = new EnhancedArray(2, 4, 7, 11, 13, 16, 19);
+console.log("Array after subtracting 2 from all its elements: " + arr.subtract(2));
+console.log("Array after subtracting its elements from elements of [2, 4, 6, 8, 10, 12, 14]: " + arr.subtract([2, 4, 6, 8, 10, 12, 14]));
+```
+
+#### multiply()
+`since v1.1.6`
+
+Performs an element-wise multiplication between the original array and passed array.
+
+Syntax:
+```js
+let add = enhanced_array_instance.multiply(any);
+```
+
+Parameters:
+- **any** : If it's a numeric value, it will be multiplied by all elements of the original array, else if it's an array of numeric values, then an element-wise multiplication is performed.
+
+Return:
+- An instance of `EnhancedArray` that contains the result of the multiplication, returns `null` if **any** is neither a numeric value nor array, or if the length of `any` doesn't equal the length of the original array.
+
+Examples:
+```js
+let arr = new EnhancedArray(2, 4, 7, 11, 13, 16, 19);
+console.log("Array after multiplying all its elements by 2: " + arr.multiply(2));
+console.log("Array after multiplying its elements with elements of [2, 4, 6, 8, 10, 12, 14]: " + arr.multiply([2, 4, 6, 8, 10, 12, 14]));
+```
+
+#### divide()
+`since v1.1.6`
+
+Performs an element-wise division between the original array and passed array.
+
+Syntax:
+```js
+let add = enhanced_array_instance.divide(any);
+```
+
+Parameters:
+- **any** : If it's a numeric value, all elements of the original array will be divided by it, else if it's an array of numeric values, then an element-wise division is performed.
+
+Return:
+- An instance of `EnhancedArray` that contains the result of the division, returns `null` if **any** is neither a numeric value nor array, or if the length of `any` doesn't equal the length of the original array.
+
+Examples:
+```js
+let arr = new EnhancedArray(2, 4, 7, 11, 13, 16, 19);
+console.log("Array after dividing all its elements by 2: " + arr.divide(2));
+console.log("Array after dividing its elements with elements of [2, 4, 6, 8, 10, 12, 14]: " + arr.divide([2, 4, 6, 8, 10, 12, 14]));
+```
+
+#### exponent()
+`since v1.1.6`
+
+Performs an element-wise exponentiation between the original array and passed array.
+
+Syntax:
+```js
+let add = enhanced_array_instance.exponent(any);
+```
+
+Parameters:
+- **any** : If it's a numeric value, all elements of the original array will be exponentiated by it, else if it's an array of numeric values, then an element-wise exponentiation is performed.
+
+Return:
+- An instance of `EnhancedArray` that contains the result of the exponentiation, returns `null` if **any** is neither a numeric value nor array, or if the length of `any` doesn't equal the length of the original array.
+
+Examples:
+```js
+let arr = new EnhancedArray(2, 4, 7, 11, 13, 16, 19);
+console.log("Array after raising all its elements to power 2: " + arr.exponent(2));
+console.log("Array after raising all its elements to the power of elements of [2, 4, 6, 8, 10, 12, 14]: " + arr.exponent([2, 4, 6, 8, 10, 12, 14]));
 ```
