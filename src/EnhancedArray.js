@@ -576,7 +576,95 @@ class EnhancedArray extends Array {
         return (s / sw);
     }
 
+    add(any) {
+        let result = this.slice();
+        if ((typeof(any) === "number") || (any instanceof Number)) {
+            for (let i = 0; i < result.length; i++) {
+                result[i] += any;
+            }
+        }
+        else if ((any instanceof Array) && (any.length === result.length)) {
+            for (let i = 0; i < result.length; i++) {
+                result[i] += any[i];
+            }
+        }
+        else {
+            result = null;
+        }
+        return result;
+    }
 
+    subtract(any) {
+        let result = this.slice();
+        if ((typeof(any) === "number") || (any instanceof Number)) {
+            for (let i = 0; i < result.length; i++) {
+                result[i] -= any;
+            }
+        }
+        else if ((any instanceof Array) && (any.length === result.length)) {
+            for (let i = 0; i < result.length; i++) {
+                result[i] -= any[i];
+            }
+        }
+        else {
+            result = null;
+        }
+        return result;
+    }
+
+    multiply(any) {
+        let result = this.slice();
+        if ((typeof(any) === "number") || (any instanceof Number)) {
+            for (let i = 0; i < result.length; i++) {
+                result[i] *= any;
+            }
+        }
+        else if ((any instanceof Array) && (any.length === result.length)) {
+            for (let i = 0; i < result.length; i++) {
+                result[i] *= any[i];
+            }
+        }
+        else {
+            result = null;
+        }
+        return result;
+    }
+
+    divide(any) {
+        let result = this.slice();
+        if ((typeof(any) === "number") || (any instanceof Number)) {
+            for (let i = 0; i < result.length; i++) {
+                result[i] /= any;
+            }
+        }
+        else if ((any instanceof Array) && (any.length === result.length)) {
+            for (let i = 0; i < result.length; i++) {
+                result[i] /= any[i];
+            }
+        }
+        else {
+            result = null;
+        }
+        return result;
+    }
+
+    exponent(any) {
+        let result = this.slice();
+        if ((typeof(any) === "number") || (any instanceof Number)) {
+            for (let i = 0; i < result.length; i++) {
+                result[i] = Math.pow(result[i], any);
+            }
+        }
+        else if ((any instanceof Array) && (any.length === result.length)) {
+            for (let i = 0; i < result.length; i++) {
+                result[i] = Math.pow(result[i], any[i]);
+            }
+        }
+        else {
+            result = null;
+        }
+        return result;
+    }
 }
 
 module.exports = EnhancedArray;
